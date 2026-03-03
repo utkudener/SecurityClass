@@ -49,9 +49,7 @@ This installs all required packages automatically.
 #### 1. Install Conda
 
 We recommend managing Python and course dependencies using Conda.
-
 [Conda](https://docs.conda.io/projects/conda/en/latest/index.html) is an open-source environment and package manager that runs on Windows, macOS, and Linux. It allows you to create isolated environments containing a specific Python version and all required libraries for a project.
-
 Using Conda helps avoid common installation problems and ensures that everyone runs the course materials in a consistent and reproducible setup.
 
 Conda allows you to:
@@ -84,16 +82,18 @@ Your terminal prompt should now show `(<env-name>)`.
 
 #### 3. Clone the course repository
 
+Use [git](https://git-scm.com/) to clone the repository from GitHub. If you do not have git installed you can install it following the [install guide](https://git-scm.com/install/windows).
+
 Clone the repository:
 ```bash
 git clone https://github.com/marchioa/security.git
-cd security
 ```
+This will create a folder for the repository and download all files.
 
 
 #### 4. Install the course package
 
-Install the repository and its dependencies:
+Inside the repository folder, install the course package and its dependencies:
 ```bash
 pip install -e ".[notebook]"
 ```
@@ -106,17 +106,24 @@ This command:
 
 #### 5. Open a notebook and select a Python kernel
 
-You can open a jupyter notebook from either **VSCode** or **JupyterLab**.
+You can open a jupyter notebook from either **VSCode**, **JupyterLab**, or any other Integrated Development Environment (IDE).
+
+##### VSCode
+You can download VSCode from [here](https://code.visualstudio.com/download).
+After installation, you can open VSCode and click "Open folder..." and select the repository folder in your local file system. It will open a view in which you have the file browser on the left pane. Here, you can select a notebook (or any other file) and it will be opened in the main window.
+
+##### JupyterLab
+JupyterLab has been already installed in the conda environment as a dependency of the course package.
 
 You can start JupyterLab from your terminal (or *Anaconda Prompt* on Windows)
 ```bash
 jupyter lab
 ```
+This command will automatically open JupyterLab as a web page in the default web browser.
+On the left pane, you have the file browser where you can select a notebook (or any other file) and it will be opened in the main window.
 
-Then open a notebook from the `notebooks/` folder and select the kernel:
-```
-Python (<env-name>)
-```
+##### Select Python interpreter
+After opening a notebook, you must first select the Python kernel. In both VSCode and JupyterLab you find the kernel selector on the right most part the notebook toolbar. Sometimes, it is autmatically detected and selected so you will find something like `Python (<env-name>)`, `Python 3.x.x`, or `Python (ipykernel)`. Some other times, you find `Select Kernel` so you need to click and select the Python Interpreter related to the course conda environment.
 
 
 ## 🔄 Updating the Environment
@@ -134,9 +141,11 @@ This refreshes dependencies while keeping your environment intact.
 ```
 security/
 │
+├── data/            # data for lectures and excercises
 ├── notebooks/       # Lectures and exercises
 ├── src/             # Reusable Python modules
 ├── pyproject.toml   # Dependencies and configuration
+├── LICENSE
 └── README.md
 ```
 
